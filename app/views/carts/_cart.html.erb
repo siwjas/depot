@@ -1,19 +1,8 @@
 <div id="<%= dom_id cart %>" >
-	<h2 class="font-bold text-lg mb-3">Your Pragmatic Cart</h2>
+	<h2 class="font-bold text-lg mb-3">Your Cart</h2>
 
 	<table class="table-auto">
-		<% cart.line_items.each do |line_item| %>
-		<tr>
-			<td class="text-right"><%= line_item.quantity %></td>
-			<td>&times;</td>
-			<td class="pr-2">
-				<%= line_item.product.title %>
-			</td>
-			<td class="text-right font-bold">
-				<%= number_to_currency(line_item.total_price) %>
-			</td>
-		</tr>
-		<% end %>
+		<%= render cart.line_items %>
 		<tfoot>
 			<tr>
 				<th class="text-right pr-2 pt-2" colspan="3">Total:</th>
@@ -24,7 +13,11 @@
 		</tfoot>
 	</table>
 
-	<%= button_to 'Empty Cart', cart, method: :delete,
-		class: 'ml-4 rounded-lg py-1 px-2 text-white bg-green-600' %>
+	<div class="flex flex-row gap-5 mt-5">
+		<%= button_to "Empty cart", cart, method: :delete, 
+			class: "px-3 py-2 text-sm font-medium text-center text-white bg-rose-600 
+				rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 
+				dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800" %>		
+	</div>
 
 </div>
